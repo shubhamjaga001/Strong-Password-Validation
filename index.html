@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #spanbox {
+            display: none;
+            color: red;
+            margin-top: 10px;
+        }
+
+        #spanbox span {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Strong Password Validation</h1>
+<form>
+    Password<br>
+    <input type="password" id="inputtext" onclick="firstFunction()" oninput="secondFunction()">
+    <div id="spanbox">
+        <span id="capital">Capital *</span>
+        <span id="small">Small *</span>
+        <span id="number">Number *</span>
+        <span id="symbol">Symbol *</span>
+    </div>
+</form>
+
+<script>
+    function firstFunction() {
+        var a = document.getElementById("spanbox");
+        a.style.display = "block";
+    }
+
+    function secondFunction() {
+        var cap = /[A-Z]/g;
+        var sma = /[a-z]/g;
+        var num = /[0-9]/g;
+        var sym = /[!@#$%^&*()]/g;
+
+        var capi = document.getElementById("capital");
+        var smal = document.getElementById("small");
+        var numb = document.getElementById("number");
+        var symb = document.getElementById("symbol");
+
+        var pass = document.getElementById("inputtext").value;
+
+        pass.match(cap) ? capi.style.display = "none" : capi.style.display = "block";
+        pass.match(sma) ? smal.style.display = "none" : smal.style.display = "block";
+        pass.match(num) ? numb.style.display = "none" : numb.style.display = "block";
+        pass.match(sym) ? symb.style.display = "none" : symb.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
